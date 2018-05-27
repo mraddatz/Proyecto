@@ -1,0 +1,26 @@
+<h2 align="center"><strong><%= @post.name %></strong></h2>
+<div class="well col-xs-9 col-xs-offset-2">
+	<hr>
+		<%= simple_format(@post.text) %>
+	<div class="post-actions">
+		<% if (@user != nil) and @user.has_role? :admin%>
+			<%= link_to 'Edit post', edit_forum_post_path(@post), class: "btn btn-xs btn-primary" %>
+			<%= link_to 'Back', forum_posts_path, class: "btn btn-xs btn-primary" %>
+		<% end %>
+	</div>
+</div>
+
+<section class="section comments">
+    <div class="container">
+    	<h2 class="subtitle is-5">Comments</h2>
+    	<strong><%= @post.comments.count %></strong> 
+        <%= render @post.comments %>
+        <div class="comment-form">
+            <hr />
+            <% if (@user != nil)%>
+              <h3 class="subtitle is-3">Leave a reply</h3>
+               <%= render 'comments/form' %>
+            <% end %>
+        </div>
+    </div>
+</section>

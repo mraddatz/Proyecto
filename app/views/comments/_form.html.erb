@@ -1,0 +1,35 @@
+<div class='row'>
+  <div class='col-md-12'>
+    <%= form_for ([@forum, @post, @post.comments.build]) do |form| %>
+<!--
+collection.build(attributes = {}, …) Returns one or more new objects of the collection type that have been instantiated with attributes and linked to this object through a foreign key, but have not yet been saved. Note: This only works if an associated object already exists, not if it‘s nil!
+-->
+      
+      <% if (@user != nil)%>
+        <div class='form-group'>
+          <div class="control-label col-sm-2">
+            <%= form.label :name %>
+          </div>
+          <div class='col-sm-9'>
+            <%= form.text_field :name, id: :comment_name, class: "form-control", placeholder: "User name", autofocus: true %>
+          </div>
+        </div>
+
+        <div class='form-group'>
+          <div class="control-label col-sm-2">
+            <%= form.label :comment %>
+          </div>
+          <div class='col-sm-9'>
+            <%= form.text_area :comment, id: :comment_comment, rows: 3, class: "form-control", placeholder: "Comment", autofocus: true %>
+          </div>
+        </div>
+
+        <div class='form-group'>
+        <div class='col-sm-offset-2 col-sm-10'>
+          <%= form.submit class: 'btn btn-primary btn-s' %>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

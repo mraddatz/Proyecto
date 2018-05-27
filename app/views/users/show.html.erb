@@ -1,0 +1,7 @@
+<h1>Your Posts</h1>
+	<% @user_posts.each do |post| %>
+		<div class="well col-xs-11">
+        	<h4 class="post-title"><%= post.name %></h4>
+        	<%= simple_format(post.text) %>
+        </div>
+	<%end%>

@@ -1,0 +1,51 @@
+$navbar-default-bg: #08088A;
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+#logo{
+	float: left;
+	font-size: 1.7em;
+	color: #99aab5;
+	letter-spacing: -1px;
+	font-weight: bold;
+}
+
+#logo:hover {
+	color: #fff;
+	text-decoration: none; 
+}
+
+#button {
+	color: #fff;
+	text-transform: uppercase;
+}
+
+.center {
+	text-align: center;
+}
+
+.jumbotron {
+	background-image: asset-url('salah.jpg');
+	background-size: cover;
+	height: 550px;
+}
+
+.jumbotron h1 {
+	color: #99aab5;
+	letter-spacing: -1px;
+	font-weight: bold;
+}
+
+.post-actions {
+	border-top: 1px solid #eaeaea;
+	padding-top: 5px;
+}
+
+.forum-title {
+	margin-top: 0;
+}
+
+.post-title {
+	margin-top: 0;
+}

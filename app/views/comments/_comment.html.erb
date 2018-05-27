@@ -1,0 +1,17 @@
+
+<div class="well col-xs-10 col-xs-offset-2">
+  <hr>
+    <strong><%= comment.name %></strong>
+    <%= simple_format(comment.comment) %>
+  <div class="post-actions">
+    <% if (@user != nil) and @user.has_role? :admin%>
+      <%= link_to 'Edit', edit_forum_post_comment_path(@forum, @post, comment), class: "btn btn-xs btn-primary" %>
+      <%= link_to 'Delete', [@forum, comment.post, comment], method: :delete, class: "btn btn-xs btn-primary", data: { confirm: 'Are you sure?' } %>
+    <% end %>
+    <% if (@user != nil) and @user.has_role? :moderator, @forum%>
+      <%= link_to 'Delete', [@forum, comment.post, comment], method: :delete, class: "btn btn-xs btn-primary", data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  </div>
+</div>
+
+

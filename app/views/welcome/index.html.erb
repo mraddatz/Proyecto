@@ -1,4 +1,13 @@
-<h1>Hello World</h1>
-<p>Andres Garcia</p>
-<p>Martin Raddatz</p>
-<p>Francisco Van Nievelt</p>
+<div class="center jumbotron">
+  		<h1>UCeddit<h1>
+  		<% if current_user == nil %>
+  			<%= link_to "Login", "/users/sign_in", class: "btn btn-primary btn-lg", id: "button" %>
+  			<%= link_to "Sign Up", "/users/sign_up", class: "btn btn-primary btn-lg", id: "button" %>
+  			<%= link_to "Guest visit", "/forums", class: "btn btn-primary btn-lg", id: "button" %> 
+  		<% else %>
+			<%= link_to "Forums", "/forums", class: "btn btn-primary btn-lg", id: "button" %> 
+  		<% end %>
+</div>
+
+
+

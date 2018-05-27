@@ -1,0 +1,36 @@
+<h1 align="center">Forums</h1>
+
+<div class="container center">
+  <%= form_tag forums_path, :method => 'get' do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag 'Search', class: "btn btn-large btn-primary" %>
+  <% end %>
+
+    <% @forums.each do |forum| %>
+      <div class="well col-xs-5 col-xs-offset-1">
+          <h4 class="forum-title"><%= forum.name %></h4>
+          <%= simple_format(forum.description) %>
+        <div class="post-actions">
+          <%= link_to 'Show', forum_posts_path(forum), class: "btn btn-xs btn-primary" %>
+          <% if (@user != nil) and @user.has_role? :admin%>
+            <%= link_to 'Edit forum', edit_forum_path(forum), class: "btn btn-xs btn-primary" %>
+            <%= link_to 'Destroy', edit_forum_path(forum), class: "btn btn-xs btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+
+<div class="container">
+  <% if (@user != nil) and @user.has_role? :admin%> 
+    <%= link_to 'New Forum', new_forum_path, class: "btn btn-large btn-primary" %>
+  <% end %>
+  <%= link_to 'Back to home', root_path, class: "btn btn-large btn-primary" %>
+</div>
+
+
+ 
+
+ 
+
+

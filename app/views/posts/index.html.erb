@@ -1,0 +1,32 @@
+
+<h1 align="center"><%= @forum.name %></h1>
+
+<div class='container center'>
+  <%= form_tag forum_posts_path, :method => 'get' do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag 'Search', class: "btn btn-xs btn-primary" %>
+  <% end %>
+</div>
+    <% @posts.each do |post| %>
+      <div class="well col-xs-10">
+          <h4 class="post-title"><%= post.name %></h4>
+          <%= simple_format(post.text) %>
+        <div class="post-actions">
+          <%= link_to 'Show', [@forum, post], class: "btn btn-xs btn-primary" %>
+          <% if (@user != nil) and @user.has_role? :admin%>
+            <%= link_to 'Edit post', edit_forum_post_path(@forum, post), class: "btn btn-xs btn-primary" %>
+            <%= link_to 'Destroy', forum_post_path(@forum, post), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-primary" %>
+          <% end %>
+          <% if (@user != nil) and @user.has_role? :moderator, @forum%>
+            <%= link_to 'Destroy', forum_post_path(@forum, post), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+<div class="container">
+  <% if (@user != nil)%>
+    <%= link_to 'New Post', new_forum_post_path(@forum), class: "btn btn-large btn-primary" %>
+  <% end %>
+  <%= link_to 'Back', forums_path, class: "btn btn-large btn-primary" %>
+</div>

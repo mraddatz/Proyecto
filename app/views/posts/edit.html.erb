@@ -1,0 +1,6 @@
+<h1 align="center">Editing Post</h1>
+
+<%= render 'form', post: [@forum, @post] %>
+
+<%= link_to 'Show', [@forum, @post], class: "btn btn-large btn-primary" %> |
+<%= link_to 'Back', forum_posts_path, class: "btn btn-large btn-primary" %>
