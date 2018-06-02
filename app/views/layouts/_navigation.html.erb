@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to "UCeddit", root_path, class: "navbar-brand", id: "logo" %>
+      <%= link_to "UCeddit 2", root_path, class: "navbar-brand", id: "logo" %>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -18,11 +18,15 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
+          <%unless current_user.name.nil?%>
+            <li><a href="#"><%=current_user.name%></a></li>
+          <%end%>
           <li><a href="/users/()".format(current_user.id)>My Posts<span class="sr-only">(current)</span></a></li>
           <li><a href="/users/edit">Edit<span class="sr-only">(current)</span></a></li>
           <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %> </li>
             </u1>
         <% else %> 
+        <%= link_to "Facebook Login", user_facebook_omniauth_authorize_path, class: "btn btn-primary btn-lg", id: "button"%>
           <li><a href="/users/sign_in">Login</a></li>
           <li><a href="/users/sign_up">Register</a></li>
         <% end %>

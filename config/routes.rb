@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   resources :comments do
     resources :comments
   end
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
   get 'pages/about'
 
   get 'pages/home'
